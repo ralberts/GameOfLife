@@ -6,6 +6,7 @@ This application is an example exercise which takes advantage of using AngularJS
 
 It demonstrates the techniques by completing an exercise.  See below for the full exercise details.
 
+Live example: http://projects.ryanalberts.com/GameOfLife/
 
 ## Prerequisites
 
