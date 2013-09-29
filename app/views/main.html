@@ -1,9 +1,23 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<div class="game">
+  <h1>Game of Life!</h1>
+  <p>The Game of Life starts with a basic grid.</p><br />
+  <p>Benefits of Yeoman: 1) Using Grunt with JSLint checks camel case, spaces, etc. </p>
+  
+  <button type="button" data-ng-click="startGame()">Start</button>
+  <button type="button" data-ng-click="stopGame()">Stop</button>
+  
+
+
+</div>
+
+<div class="game-grid">
+
+  <table cellspacing="2" cellpadding="2">
+    <tr ng-repeat="rows in board">
+      <td ng-repeat="life in rows">
+         {{ life }}
+      </td>
+    </tr>
+  </table>
+	
 </div>
