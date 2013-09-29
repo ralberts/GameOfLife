@@ -20,8 +20,23 @@ It demonstrates the techniques by completing an exercise.  See below for the ful
   (and don't forget to add `node.exe` to  your executable path)
 
 ### Yeoman
-- A simple server is all you need but I would recommend installing yeoman.
 - Install yeoman: <code>npm install -g yo</code>
+
+## Getting Started
+
+Install dependencies: 
+
+```
+$ npm install
+$ bower install
+```
+
+Server - Fire up the server (it will compile templates, scss, js, tests as first task):
+
+```
+$ grunt build
+$ grunt server
+``` 
 
 ## Running the application
 - To start the server type: <code>grunt server</code>
