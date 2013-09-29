@@ -1,12 +1,16 @@
 <div class="game">
   <h1>Game of Life!</h1>
-  <p>The Game of Life starts with a basic grid.</p><br />
-  <p>Benefits of Yeoman: 1) Using Grunt with JSLint checks camel case, spaces, etc. </p>
+  <p>The Game of Life starts with a basic grid. It evolves based on the following rules:</p>
+  <p><ol><li>Any live cell with fewer than two live neighbours dies (under-population)</li>
+         <li>Any live cell with two or three live neighbours lives on to the next generation (survival)</li>
+   		 <li>Any live cell with more than three live neighbours dies (overcrowding)</li>
+   		 <li>Any dead cell with exactly three live neighbours becomes a live cell (reproduction)</li>
+  	</ol>
+  </p><br/>
   
   <button type="button" data-ng-click="startGame()">Start</button>
   <button type="button" data-ng-click="stopGame()">Stop</button>
-  
-
+  <button type="button" data-ng-click="resetGame()">Reset</button>
 
 </div>
 
@@ -14,7 +18,7 @@
 
   <table cellspacing="2" cellpadding="2">
     <tr ng-repeat="rows in board">
-      <td ng-repeat="life in rows">
+      <td ng-repeat="life in rows" ng-class="{dead: life==0, live: life==1}">
          {{ life }}
       </td>
     </tr>

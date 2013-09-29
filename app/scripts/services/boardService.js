@@ -25,7 +25,7 @@ angular.module('GameOfLifeApp')
 	/**
 	 * This will go through the possible 8 neighbors of a cell.
 	 *
-	 * For cells along the side it will know the valid regions of the cell.
+	 * For cells along the side it will know the valid regions of it's neighbors.
 	 */
 	function findLiveNeighbors(board, xCurr, yCurr) {
 	  var rowLimit = board.length-1;
@@ -70,6 +70,10 @@ angular.module('GameOfLifeApp')
 	  return result;
   }
 
+	/**
+	 * Checks the cells neighbors and determines if the cell dies or lives in
+	 * the next generation.
+	 */
 	function evolveCell(board, cell, x, y) {
 	  var result;
 	  var liveNeighbors = findLiveNeighbors(board, x, y);
@@ -82,6 +86,10 @@ angular.module('GameOfLifeApp')
 	  return result;
 	}
 
+	/**
+	 * Evolves board to the next generation by passing by each cell to determine
+	 * the next generation.
+	 */
 	function evolve(board) {
 	  var evolvedCell;
     var evolvedBoard;
@@ -97,7 +105,7 @@ angular.module('GameOfLifeApp')
 	  return evolvedBoard;
 	}
 
-    // Public API
+  // Public API
   return {
       /**
        * This will create a board of random cells of either alive (1) or dead (0).
@@ -105,12 +113,25 @@ angular.module('GameOfLifeApp')
        * As per the directions, it is ambiguous whether the "input" should be human
        * or random.  This function generates a random game board.
        */
-      createBoard: function () {
-        board = [[0,1,0,0,0], //Keep for testing
-                 [1,0,0,1,1],
-                 [1,1,0,0,1],
-                 [0,1,0,0,0],
-                 [1,0,0,0,1]];
+      createBoard: function (xLength, yLength) {
+        var board;
+        if(!xLength && !xLength) {
+          board = [[0,1,0,0,0],
+                   [1,0,0,1,1],
+                   [1,1,0,0,1],
+                   [0,1,0,0,0],
+                   [1,0,0,0,1]];
+        } else {
+          board = [];
+          for (var x = 0; x < xLength; x++) {
+            var cols = [];
+            for (var y = 0; y < yLength; y++) {
+              cols.push(Math.floor(Math.random() * 2));
+            }
+            board.push(cols);
+          }
+        }
+
         return board;
       },
 
@@ -118,18 +139,29 @@ angular.module('GameOfLifeApp')
        * Retrieve the current board.  If one has not been created it will
        * create it.
        */
-      getBoard: function() {
+      getBoard: function(xLength, yLength) {
         if(!board) {
-          board = this.createBoard();
+          this.setBoard(this.createBoard(xLength, yLength));
         }
 
         return board;
       },
 
+      /**
+       * @param newBoard to set as the current generation
+       */
+      setBoard: function(newBoard) {
+        board = newBoard;
+      },
 
+      /**
+       * Progress to the next generation
+       * @returns new board containing new cells.
+       */
       nextGeneration: function() {
-        this.board = evolve(this.getBoard());
-        return this.board;
+        var newBoard = evolve(this.getBoard());
+        this.setBoard(newBoard);
+        return newBoard;
       },
 
       /**

@@ -26,6 +26,7 @@
 
 .game-grid {
   height: 500px;
+  font-size: 25px;
   
   table {
     margin-left: auto;
@@ -35,13 +36,19 @@
     @include table-scaffolding;
     @include inner-table-borders(1px, darken($table-color, 40%));
     @include outer-table-borders(2px);
-    @include alternating-rows-and-columns($table-color, adjust-hue($table-color, -120deg), #222222);
     
     td, th {
       padding: 5px
     }
+    
+    .live {
+      background-color: $table-color;
+    }
+    
+    .dead {
+      background-color: #A64D4D;
+    }
   }
-
-  
 }
+
 
