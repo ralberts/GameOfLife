@@ -20,14 +20,11 @@ It demonstrates the techniques by completing an exercise.  See below for the ful
   (and don't forget to add `node.exe` to  your executable path)
 
 ### Yeoman
-- You really just need a server or Grunt but since it's easy enough - one can install yeoman
-	npm install -g yo
- 
+- A simple server is all you need but I would recommend installing yeoman.
+- Install yeoman: <code>npm install -g yo</code>
 
-## Workings of the application
-
-- To start the server type: 
-	grunt server
+## Running the application
+- To start the server type: <code>grunt server</code>
 
 ## Exercise
 
@@ -36,25 +33,28 @@ Write some code that evolves generations through the "game of life".
 The input will be a game board of cells, either alive (1) or dead (0).
 
 The code should take this board and create a new board for the next generation based on the following rules:
-1) Any live cell with fewer than two live neighbours dies (under-population)
-2) Any live cell with two or three live neighbours lives on to the next generation (survival)
-3) Any live cell with more than three live neighbours dies (overcrowding)
-4) Any dead cell with exactly three live neighbours becomes a live cell (reproduction)
+ 1. Any live cell with fewer than two live neighbours dies (under-population)
+ 2. Any live cell with two or three live neighbours lives on to the next generation (survival)
+ 3. Any live cell with more than three live neighbours dies (overcrowding)
+ 4. Any dead cell with exactly three live neighbours becomes a live cell (reproduction)
 
 As an example, this game board as input:
+<pre>
 0 1 0 0 0
 1 0 0 1 1
 1 1 0 0 1
 0 1 0 0 0
 1 0 0 0 1
+</pre>
 
 Will have a subsequent generation of:
+<pre>
 0 0 0 0 0
 1 0 1 1 1
 1 1 1 1 1
 0 1 0 0 0
 0 0 0 0 0
-
+</pre>
 
 
 
